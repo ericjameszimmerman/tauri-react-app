@@ -33,8 +33,8 @@ function Convert() {
       startOnLoad: true,
       theme: 'default',
       securityLevel: 'loose',
+      fit: true // Enable diagram fitting
     })
-    // Initial render
     renderDiagram()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -45,8 +45,8 @@ function Convert() {
   return (
     <div className="h-full flex">
       {/* Left Panel - Editor */}
-      <div className="w-1/2 p-4 border-r">
-        <div className="mb-4 flex justify-between items-center">
+      <div className="w-1/2 flex flex-col p-4 border-r">
+        <div className="flex justify-between items-center mb-2">
           <h2 className="text-lg font-semibold">Mermaid Editor</h2>
           <div className="space-x-2">
             <button 
@@ -66,7 +66,7 @@ function Convert() {
         <textarea
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          className="w-full h-[calc(100vh-14rem-64px-40px)] p-4 font-mono text-sm border rounded focus:outline-none focus:border-blue-500 resize-none overflow-auto"
+          className="flex-1 w-full p-4 font-mono text-sm border rounded focus:outline-none focus:border-blue-500 resize-none overflow-auto min-h-0"
           placeholder="Enter Mermaid diagram code here..."
           spellCheck={false}
           wrap="off"
@@ -74,13 +74,13 @@ function Convert() {
       </div>
 
       {/* Right Panel - Preview */}
-      <div className="w-1/2 p-4">
-        <h2 className="text-lg font-semibold mb-4">Preview</h2>
-        <div className="border rounded p-4 bg-white">
+      <div className="w-1/2 flex flex-col p-4">
+        <h2 className="text-lg font-semibold mb-2">Preview</h2>
+        <div className="flex-1 border rounded p-4 bg-white overflow-auto min-h-0">
           {error ? (
             <div className="text-red-500 text-sm">{error}</div>
           ) : (
-            <div className="overflow-auto" ref={mermaidRef} />
+            <div className="h-full flex items-center justify-center" ref={mermaidRef} />
           )}
         </div>
       </div>
