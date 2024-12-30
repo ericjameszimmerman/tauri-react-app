@@ -33,7 +33,11 @@ function Convert() {
       startOnLoad: true,
       theme: 'default',
       securityLevel: 'loose',
-      fit: true // Enable diagram fitting
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
     })
     renderDiagram()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
